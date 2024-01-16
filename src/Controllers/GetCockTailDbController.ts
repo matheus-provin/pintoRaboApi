@@ -8,21 +8,94 @@ export async function getCockTailDbController(): Promise<IDrink[]> {
 
   for (const letter of alphabetArray) {
     // const a = await getCockTailDb(letter);
-    const a = getCockTailDb(letter);
+    const a = getCockTailFromFiles(letter);
 
     if (a.length > 0) {
       _obj.push(...a);
     }
   }
-  console.log(_obj.length, "cocktails");
+  console.log(_obj.length, _obj[0], "cocktails");
   return _obj;
 }
 
-function getCockTailDb(letter: string) {
+function getCockTailFromFiles(letter: string) {
   // read the file and store it in a variable
   const data = require("../Assets/CocktailDb/" + letter + ".json");
 
   // extract the value of the key "drinks" and store it in a variable
-  const drinks: IDrink[] = data.drinks;
+  const drinks: IDrink[] = drinkFactory(data.drinks);
   return drinks;
+}
+
+function drinkFactory(drinkUnformatted: any): IDrink[] {
+  if (drinkUnformatted === null || drinkUnformatted?.length === 0) {
+    return [];
+  }
+
+  let formattedDrinks: IDrink[] = [];
+
+  drinkUnformatted.forEach((element: any) => {
+    let formattedDrink: IDrink = {
+      idDrink: -1,
+      strDrink: "",
+      strDrinkAlternate: "",
+      strTags: "",
+      strVideo: "",
+      strCategory: "",
+      strIBA: "",
+      strAlcoholic: "",
+      strGlass: "",
+      strInstructions: "",
+      strInstructionsES: "",
+      strInstructionsDE: "",
+      strInstructionsFR: "",
+      strInstructionsIT: "",
+      strInstructionsZH_HANS: "",
+      strInstructionsZH_HANT: "",
+      strDrinkThumb: "",
+      ingredients: [],
+      strImageSource: "",
+      strImageAttribution: "",
+      strCreativeCommonsConfirmed: "",
+      dateModified: "",
+      ...element,
+    };
+
+    ingredientsFactory(element, formattedDrink);
+
+    formattedDrinks.push(formattedDrink);
+  });
+
+  return formattedDrinks;
+}
+function ingredientsFactory(element: any, formattedDrink: IDrink) {
+  let continueLoop = true;
+  let index = 1;
+  while (continueLoop) {
+    let ingredient = "";
+    let measure = "";
+
+    if ("strIngredient" + index in element) {
+      ingredient = element["strIngredient" + index];
+    }
+    if ("strMeasure" + index in element) {
+      measure = element["strMeasure" + index];
+    }
+
+    if (
+      (ingredient === "" || ingredient === null) &&
+      (measure === "" || measure === null)
+    ) {
+      continueLoop = false;
+      break;
+    }
+
+    formattedDrink.ingredients.push({
+      id: null,
+      name: ingredient,
+      measure: measure,
+    });
+
+    index++;
+  }
 }
