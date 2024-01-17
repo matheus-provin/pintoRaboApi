@@ -14,7 +14,7 @@ export async function getCockTailDbController(): Promise<IDrink[]> {
       _obj.push(...a);
     }
   }
-  console.log(_obj.length, _obj[0], "cocktails");
+
   return _obj;
 }
 
