@@ -1,6 +1,6 @@
 import { IDrink, IIngredient } from "../Interfaces/IDrink";
 
-export function getCocktailByIngredientsName(
+export function getDrinksWhereIHaveAllIngredients(
   cocktails: IDrink[],
   ingredients: string[]
 ): IDrink[] {
@@ -24,5 +24,29 @@ function CheckIfIHaveAllIngredientsForThisDrink(
     const iHaveThisIngredient = ingredients.includes(cocktailIngredient.name);
 
     return iHaveThisIngredient;
+  });
+}
+
+export function getDrinksWhereIHaveAtLeastOneIngredient(
+  cocktails: IDrink[],
+  ingredients: string[]
+): IDrink[] {
+  const matchingCocktails: IDrink[] = cocktails.filter((cocktail: IDrink) => {
+    return CheckIfIHaveAnyIngredientsForThisDrink(cocktail, ingredients);
+  });
+
+  return matchingCocktails;
+}
+
+function CheckIfIHaveAnyIngredientsForThisDrink(
+  cocktail: IDrink,
+  ingredients: string[]
+) {
+  return cocktail.ingredients.some((cocktailIngredient: IIngredient) => {
+    // if this ingredient is null or empty, then this cocktail is not valid
+    if (cocktailIngredient.name === null || cocktailIngredient.name === "")
+      return false;
+
+    return ingredients.includes(cocktailIngredient.name);
   });
 }

@@ -1,5 +1,8 @@
 import { getCockTailDbController } from "./Controllers/GetCockTailDbController";
-import { getCocktailByIngredientsName } from "./Functions/GetCockTailByIngredients";
+import {
+  getDrinksWhereIHaveAllIngredients,
+  getDrinksWhereIHaveAtLeastOneIngredient,
+} from "./Functions/GetCockTailByIngredients";
 import { IDrink } from "./Interfaces/IDrink";
 
 const express = require("express");
@@ -23,7 +26,7 @@ app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
   await start();
 
   // console.log(obj.length, obj[0], "cocktails");
-  const b = getCocktailByIngredientsName(obj, [
+  const b = getDrinksWhereIHaveAllIngredients(obj, [
     "Dark rum",
     "Peach nectar",
     "Orange juice",
@@ -33,15 +36,29 @@ app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
   res.send("Hellooooo World! \nQtd:" + obj.length);
 });
 
-app.get("/GetDrinksByIngredient", async (req: any, res: any) => {
+app.get("/GetDrinksByIngredient/AllIngredients", async (req: any, res: any) => {
   await start();
 
   const { ingredients } = req.query;
 
-  const cocktails = getCocktailByIngredientsName(obj, ingredients);
+  const cocktails = getDrinksWhereIHaveAllIngredients(obj, ingredients);
 
   console.log("Ingredients:", ingredients, cocktails);
 
-  //RES.SEnd as json
   res.send(cocktails);
 });
+
+app.get(
+  "/GetDrinksByIngredient/SomeIngredients",
+  async (req: any, res: any) => {
+    await start();
+
+    const { ingredients } = req.query;
+
+    const cocktails = getDrinksWhereIHaveAtLeastOneIngredient(obj, ingredients);
+
+    console.log("Ingredients:", ingredients, cocktails);
+
+    res.send(cocktails);
+  }
+);

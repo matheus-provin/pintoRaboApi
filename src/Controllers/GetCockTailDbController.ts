@@ -63,13 +63,14 @@ function drinkFactory(drinkUnformatted: any): IDrink[] {
 
     ingredientsFactory(element, formattedDrink);
 
-    formattedDrink.strDrink = formattedDrink.strDrink.toLowerCase();
+    formattedDrink.strDrink = formattedDrink.strDrink?.toLowerCase();
 
     formattedDrinks.push(formattedDrink);
   });
 
   return formattedDrinks;
 }
+
 function ingredientsFactory(element: any, formattedDrink: IDrink) {
   let continueLoop = true;
   let index = 1;
@@ -94,8 +95,8 @@ function ingredientsFactory(element: any, formattedDrink: IDrink) {
 
     formattedDrink.ingredients.push({
       id: null,
-      name: ingredient.toLowerCase(),
-      measure: measure.toLowerCase(),
+      name: ingredient?.toLowerCase(),
+      measure: measure?.toLowerCase(),
     });
 
     index++;
