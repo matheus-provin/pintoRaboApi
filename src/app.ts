@@ -33,7 +33,10 @@ app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
   ]);
   console.log(b.length, b[0], "getCocktailByIngredientsName");
 
-  res.send("Hellooooo World! \nQtd:" + obj.length);
+  res.send("Drinks Loaded:" + obj.length);
+  res.send(
+    "Routes = \n/GetDrinksByIngredient/AllIngredients \nAnd \n/GetDrinksByIngredient/SomeIngredients"
+  );
 });
 
 app.get("/GetDrinksByIngredient/AllIngredients", async (req: any, res: any) => {
