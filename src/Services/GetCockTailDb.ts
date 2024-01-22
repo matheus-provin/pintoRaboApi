@@ -1,5 +1,5 @@
 import axios from "axios";
-import { drinksFactory } from "../Factories/drinksFactory";
+import { drinksFactory } from "../Factories/DrinksFactory";
 
 export async function getCockTailDb(letter: string = "a") {
   try {
