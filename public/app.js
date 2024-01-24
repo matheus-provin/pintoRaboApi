@@ -35,8 +35,9 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         "Orange juice",
     ]);
     console.log(b.length, b[0], "getCocktailByIngredientsName");
-    res.send("Drinks Loaded:" + obj.length);
-    res.send("Routes = \n/GetDrinksByIngredient/AllIngredients \nAnd \n/GetDrinksByIngredient/SomeIngredients");
+    res.send("Drinks Loaded:" +
+        obj.length +
+        "/nRoutes = \n/GetDrinksByIngredient/AllIngredients \nAnd \n/GetDrinksByIngredient/SomeIngredients");
 }));
 app.get("/GetDrinksByIngredient/AllIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield start();
