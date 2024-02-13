@@ -1,4 +1,4 @@
-import { IDrink } from "../Interfaces/IDrink";
+import { IDrink } from "@/interfaces/IDrink";
 
 export async function getCockTailDbController(): Promise<IDrink[]> {
   const _obj: IDrink[] = [];
@@ -20,7 +20,9 @@ export async function getCockTailDbController(): Promise<IDrink[]> {
 
 function getCockTailFromFiles(letter: string) {
   // read the file and store it in a variable
-  const data = require("../Assets/CocktailDb/" + letter + ".json");
+  const data = require("../assets/cocktail-database/" +
+    letter.toUpperCase() +
+    ".json");
 
   // extract the value of the key "drinks" and store it in a variable
   const drinks: IDrink[] = drinkFactory(data.drinks);
