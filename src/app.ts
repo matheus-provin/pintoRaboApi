@@ -1,9 +1,9 @@
-import { getCockTailDbController } from "./Controllers/GetCockTailDbController";
+import { getCockTailDbController } from "./controllers/getCockTailDbController";
 import {
   getDrinksWhereIHaveAllIngredients,
   getDrinksWhereIHaveAtLeastOneIngredient,
-} from "./Functions/GetCockTailByIngredients";
-import { IDrink } from "./Interfaces/IDrink";
+} from "./functions/getCockTailByIngredients";
+import { IDrink } from "./interfaces/iDrink";
 
 const express = require("express");
 // const axios = require("axios"); // Import the axios library

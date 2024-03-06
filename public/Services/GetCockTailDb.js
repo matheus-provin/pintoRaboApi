@@ -14,12 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCockTailDb = void 0;
 const axios_1 = __importDefault(require("axios"));
-const DrinksFactory_1 = require("../Factories/DrinksFactory");
+const drinksFactory_1 = require("../factories/drinksFactory");
 function getCockTailDb(letter = "a") {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const response = yield axios_1.default.get("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=" + letter);
-            return (0, DrinksFactory_1.drinksFactory)(response);
+            return (0, drinksFactory_1.drinksFactory)(response);
         }
         catch (error) {
             // Handle errors if the API call fails
