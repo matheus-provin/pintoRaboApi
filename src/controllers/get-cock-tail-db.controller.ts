@@ -1,4 +1,4 @@
-import { IDrink } from "@/interfaces/drink.interface";
+import { IDrink } from "../interfaces/drink.interface";
 
 export async function getCockTailDbController(): Promise<IDrink[]> {
   const _obj: IDrink[] = [];

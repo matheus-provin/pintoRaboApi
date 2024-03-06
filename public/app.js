@@ -9,8 +9,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const getCockTailDbController_1 = require("./controllers/getCockTailDbController");
-const getCockTailByIngredients_1 = require("./functions/getCockTailByIngredients");
+const get_cock_tail_db_controller_1 = require("./controllers/get-cock-tail-db.controller");
+const get_cock_tail_by_ingredients_1 = require("./functions/get-cock-tail-by-ingredients");
 const express = require("express");
 // const axios = require("axios"); // Import the axios library
 const app = express();
@@ -19,7 +19,7 @@ let obj = [];
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
         if (obj.length === 0) {
-            obj = yield (0, getCockTailDbController_1.getCockTailDbController)();
+            obj = yield (0, get_cock_tail_db_controller_1.getCockTailDbController)();
         }
     });
 }
@@ -29,7 +29,7 @@ app.listen(port, () => {
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield start();
     // console.log(obj.length, obj[0], "cocktails");
-    const b = (0, getCockTailByIngredients_1.getDrinksWhereIHaveAllIngredients)(obj, [
+    const b = (0, get_cock_tail_by_ingredients_1.getDrinksWhereIHaveAllIngredients)(obj, [
         "Dark rum",
         "Peach nectar",
         "Orange juice",
@@ -42,14 +42,14 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 app.get("/GetDrinksByIngredient/AllIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield start();
     const { ingredients } = req.query;
-    const cocktails = (0, getCockTailByIngredients_1.getDrinksWhereIHaveAllIngredients)(obj, ingredients);
+    const cocktails = (0, get_cock_tail_by_ingredients_1.getDrinksWhereIHaveAllIngredients)(obj, ingredients);
     console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
 app.get("/GetDrinksByIngredient/SomeIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield start();
     const { ingredients } = req.query;
-    const cocktails = (0, getCockTailByIngredients_1.getDrinksWhereIHaveAtLeastOneIngredient)(obj, ingredients);
+    const cocktails = (0, get_cock_tail_by_ingredients_1.getDrinksWhereIHaveAtLeastOneIngredient)(obj, ingredients);
     console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
