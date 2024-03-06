@@ -1,4 +1,4 @@
-import { IDrink, IIngredient } from "../interfaces/iDrink";
+import { IDrink, IIngredient } from "../interfaces/drink.interface";
 
 export function getDrinksWhereIHaveAllIngredients(
   cocktails: IDrink[],
