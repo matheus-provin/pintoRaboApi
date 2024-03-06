@@ -2,7 +2,7 @@ import { getCockTailDbController } from "./controllers/get-cock-tail-db.controll
 import {
   getDrinksWhereIHaveAllIngredients,
   getDrinksWhereIHaveAtLeastOneIngredient,
-} from "./functions/get-cock-tail-by-ingredients";
+} from "./functions/get-cock-tail-by-ingredients.function";
 import { IDrink } from "./interfaces/drink.interface";
 
 const express = require("express");
