@@ -14,8 +14,8 @@ const get_cock_tail_by_ingredients_function_1 = require("../functions/get-cock-t
 // const axios = require("axios"); // Import the axios library
 const express = require("express");
 const app = express();
-// const port = 3000;
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const port = 3000;
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
         return yield (0, get_cock_tail_db_controller_1.getCockTailDbController)();

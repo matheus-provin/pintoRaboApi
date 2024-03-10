@@ -10,8 +10,8 @@ const express = require("express");
 
 const app = express();
 
-// const port = 3000;
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+const port = 3000;
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 async function start(): Promise<IDrink[]> {
   return await getCockTailDbController();
