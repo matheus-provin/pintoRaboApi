@@ -2,9 +2,9 @@
   "name": "pintoraboapi",
   "version": "0.0.1",
   "description": "",
-  "main": "index.tsx",
+  "main": "api/index.ts",
   "scripts": {
-    "start": "ts-node src/app.ts",
+    "start": "ts-node src/api/index.ts",
     "build": "tsc",
     "test": "test"
   },
