@@ -15,17 +15,14 @@ const express = require("express");
 // const axios = require("axios"); // Import the axios library
 const app = express();
 const port = 3000;
-let obj = [];
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
-        if (obj.length === 0) {
-            obj = yield (0, get_cock_tail_db_controller_1.getCockTailDbController)();
-        }
+        return yield (0, get_cock_tail_db_controller_1.getCockTailDbController)();
     });
 }
 app.use(express.static("public"));
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield start();
+    let obj = yield start();
     // console.log(obj.length, obj[0], "cocktails");
     const b = (0, get_cock_tail_by_ingredients_function_1.getDrinksWhereIHaveAllIngredients)(obj, [
         "Dark rum",
@@ -38,14 +35,14 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         "/nRoutes = \n/GetDrinksByIngredient/AllIngredients \nAnd \n/GetDrinksByIngredient/SomeIngredients");
 }));
 app.get("/GetDrinksByIngredient/AllIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield start();
+    let obj = yield start();
     const { ingredients } = req.query;
     const cocktails = (0, get_cock_tail_by_ingredients_function_1.getDrinksWhereIHaveAllIngredients)(obj, ingredients);
     console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
 app.get("/GetDrinksByIngredient/SomeIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    yield start();
+    let obj = yield start();
     const { ingredients } = req.query;
     const cocktails = (0, get_cock_tail_by_ingredients_function_1.getDrinksWhereIHaveAtLeastOneIngredient)(obj, ingredients);
     console.log("Ingredients:", ingredients, cocktails);
