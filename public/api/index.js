@@ -11,10 +11,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const get_cock_tail_db_controller_1 = require("../controllers/get-cock-tail-db.controller");
 const get_cock_tail_by_ingredients_function_1 = require("../functions/get-cock-tail-by-ingredients.function");
-const express = require("express");
 // const axios = require("axios"); // Import the axios library
+const express = require("express");
 const app = express();
-const port = 3000;
+// const port = 3000;
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 function start() {
     return __awaiter(this, void 0, void 0, function* () {
         return yield (0, get_cock_tail_db_controller_1.getCockTailDbController)();
@@ -48,5 +49,4 @@ app.get("/GetDrinksByIngredient/SomeIngredients", (req, res) => __awaiter(void 0
     console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
-app.listen(port, () => console.log("Server ready on port 3000."));
 module.exports = app;

@@ -5,11 +5,13 @@ import {
 } from "../functions/get-cock-tail-by-ingredients.function";
 import { IDrink } from "../interfaces/drink.interface";
 
-const express = require("express");
 // const axios = require("axios"); // Import the axios library
+const express = require("express");
 
 const app = express();
-const port = 3000;
+
+// const port = 3000;
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 async function start(): Promise<IDrink[]> {
   return await getCockTailDbController();
@@ -61,7 +63,5 @@ app.get(
     res.send(cocktails);
   }
 );
-
-app.listen(port, () => console.log("Server ready on port 3000."));
 
 module.exports = app;
