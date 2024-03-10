@@ -10,18 +10,15 @@ const express = require("express");
 
 const app = express();
 const port = 3000;
-let obj: IDrink[] = [];
 
-async function start() {
-  if (obj.length === 0) {
-    obj = await getCockTailDbController();
-  }
+async function start(): Promise<IDrink[]> {
+  return await getCockTailDbController();
 }
 
 app.use(express.static("public"));
 
 app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
-  await start();
+  let obj: IDrink[] = await start();
 
   // console.log(obj.length, obj[0], "cocktails");
   const b = getDrinksWhereIHaveAllIngredients(obj, [
@@ -39,7 +36,7 @@ app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
 });
 
 app.get("/GetDrinksByIngredient/AllIngredients", async (req: any, res: any) => {
-  await start();
+  let obj: IDrink[] = await start();
 
   const { ingredients } = req.query;
 
@@ -53,7 +50,7 @@ app.get("/GetDrinksByIngredient/AllIngredients", async (req: any, res: any) => {
 app.get(
   "/GetDrinksByIngredient/SomeIngredients",
   async (req: any, res: any) => {
-    await start();
+    let obj: IDrink[] = await start();
 
     const { ingredients } = req.query;
 
