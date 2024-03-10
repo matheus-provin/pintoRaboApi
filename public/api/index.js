@@ -23,9 +23,7 @@ function start() {
         }
     });
 }
-app.listen(port, () => {
-    console.log(`Server is listening at http://localhost:${port}`);
-});
+app.use(express.static("public"));
 app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield start();
     // console.log(obj.length, obj[0], "cocktails");
@@ -53,3 +51,5 @@ app.get("/GetDrinksByIngredient/SomeIngredients", (req, res) => __awaiter(void 0
     console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
+app.listen(port, () => console.log("Server ready on port 3000."));
+module.exports = app;
