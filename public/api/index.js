@@ -30,7 +30,7 @@ app.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         "Peach nectar",
         "Orange juice",
     ]);
-    console.log(b.length, b[0], "getCocktailByIngredientsName");
+    // console.log(b.length, b[0], "getCocktailByIngredientsName");
     res.send("Drinks Loaded:" +
         obj.length +
         "/nRoutes = \n/GetDrinksByIngredient/AllIngredients \nAnd \n/GetDrinksByIngredient/SomeIngredients");
@@ -39,14 +39,14 @@ app.get("/GetDrinksByIngredient/AllIngredients", (req, res) => __awaiter(void 0,
     let obj = yield start();
     const { ingredients } = req.query;
     const cocktails = (0, get_cock_tail_by_ingredients_function_1.getDrinksWhereIHaveAllIngredients)(obj, ingredients);
-    console.log("Ingredients:", ingredients, cocktails);
+    // console.log("Ingredients:", ingredients, cocktails);
     res.send(cocktails);
 }));
 app.get("/GetDrinksByIngredient/SomeIngredients", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let obj = yield start();
     const { ingredients } = req.query;
     const cocktails = (0, get_cock_tail_by_ingredients_function_1.getDrinksWhereIHaveAtLeastOneIngredient)(obj, ingredients);
-    console.log("Ingredients:", ingredients, cocktails);
+    // console.log("Ingrkedients:", ingredients, cocktails);
     res.send(cocktails);
 }));
 module.exports = app;

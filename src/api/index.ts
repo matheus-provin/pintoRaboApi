@@ -28,7 +28,7 @@ app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
     "Peach nectar",
     "Orange juice",
   ]);
-  console.log(b.length, b[0], "getCocktailByIngredientsName");
+  // console.log(b.length, b[0], "getCocktailByIngredientsName");
 
   res.send(
     "Drinks Loaded:" +
@@ -44,7 +44,7 @@ app.get("/GetDrinksByIngredient/AllIngredients", async (req: any, res: any) => {
 
   const cocktails = getDrinksWhereIHaveAllIngredients(obj, ingredients);
 
-  console.log("Ingredients:", ingredients, cocktails);
+  // console.log("Ingredients:", ingredients, cocktails);
 
   res.send(cocktails);
 });
@@ -58,7 +58,7 @@ app.get(
 
     const cocktails = getDrinksWhereIHaveAtLeastOneIngredient(obj, ingredients);
 
-    console.log("Ingredients:", ingredients, cocktails);
+    // console.log("Ingrkedients:", ingredients, cocktails);
 
     res.send(cocktails);
   }
