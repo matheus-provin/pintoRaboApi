@@ -17,7 +17,7 @@ async function start(): Promise<IDrink[]> {
   return await getCockTailDbController();
 }
 
-app.use(express.static("public"));
+app.use(express.static("dist"));
 
 app.get("/", async (req: any, res: { send: (arg0: string) => void }) => {
   let obj: IDrink[] = await start();
